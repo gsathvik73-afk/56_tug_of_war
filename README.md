@@ -35,7 +35,7 @@ pip install pygame
 python main.py
 ```
 
-**Controls:** Left-click on the HIGHER or LOWER buttons to predict the next card.   
+**Controls:** Alternate `A` and `D` to pull left. Press `R` after a match to play again.
 
 
 ## Tasks to Complete
@@ -65,6 +65,16 @@ If two evenly matched opponents play, a match can last indefinitely. Add an acti
 - The computer pulls the marker to the right at recurring intervals.
 - The match ends when the flag crosses the left boundary (Player wins) or right boundary (Computer wins).
 - Pressing R on the Game Over screen resets the rope marker, keys, timers, and game states.
+
+## Implemented Changes
+
+- Overlapping `A` and `D` presses each count when alternated. Repeated `KEYDOWN` events for a key that remains held do not count twice.
+- When the flag enters the leftmost 40% of the distance from the center to the player's goal, the computer enters a panic surge. Its cooldown falls from 180 ms to 95 ms and its pull strength rises by 25%.
+- The rope sags at rest, straightens and vibrates during pulls, and each puller leans with their pulling momentum.
+- The match clock is shown at the top. At 45 seconds, sudden death doubles the distance of player and computer pulls.
+- `R` after a win resets the rope, input state, match clock, and momentum.
+
+Run the focused checks with `python -m unittest discover -s tests -v` after installing Pygame.
 ---
 
 ## Folder Structure
